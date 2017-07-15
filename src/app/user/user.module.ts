@@ -11,6 +11,7 @@ import { userRoutes } from './user.routes';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(userRoutes)
   ],
   declarations: [
