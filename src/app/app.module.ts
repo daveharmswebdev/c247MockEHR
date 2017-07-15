@@ -6,21 +6,23 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
+import { UserModule } from './user/user.module';
 
 import { rootRoutes } from './routes';
 import { EhrComponent } from './ehr/ehr.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PatientListComponent,
-    EhrComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(rootRoutes),
+    UserModule
+  ],
+  declarations: [
+    AppComponent,
+    PatientListComponent,
+    EhrComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
