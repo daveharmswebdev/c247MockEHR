@@ -2,10 +2,10 @@
     <div class='container-fluid'>
         <a class='navbar-brand'>{{pageTitle}}</a>
         <ul class='nav navbar-nav'>
-            <li><a [routerLink]="['/ehr']">EHR</a></li>
-            <li><a [routerLink]="['/patient']">Patient</a></li>
-            <li><a [routerLink]="['/patient/new']">New Patient</a></li>
+            <li><a [routerLink]="['/ehr']" routerLinkActive="active">EHR</a></li>
+            <li><a [routerLink]="['/patient']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Patient</a></li>
+            <li><a [routerLink]="['/patient/new']" routerLinkActive="active">New Patient</a></li>
         </ul>
-        <span class='navbar-text mock-ehr-user'>Hello, Dave</span>
+        <span [routerLink]="['user/profile']" class='navbar-text mock-ehr-user'>Hello, Dave</span>
     </div>
 </nav>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PatientService } from './shared/patient.service';
 
 @Component({
@@ -9,11 +10,14 @@ import { PatientService } from './shared/patient.service';
 export class PatientListComponent implements OnInit {
   patients: any;
 
-  constructor(private patientService: PatientService) {
+  constructor(
+    private patientService: PatientService,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit() {
-    this.patients = this.patientService.getPatients();
+    this.patients = this.route.snapshot.data['patients'];
   }
 
 }

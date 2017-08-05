@@ -11,12 +11,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav/navbar.component';
-import { PatientListComponent } from './patient/patient-list.component';
-import { PatientThumbnailComponent } from './patient/patient-thumbnail.component';
-import { PatientDetailComponent } from './patient/patient-detail/patient-detail.component';
-import { CreatePatientComponent } from './patient/create-patient.component';
-import { PatientService } from './patient/shared/patient.service';
-import { PatientRouteActivator } from './patient/patient-detail/patient-route-activator.service';
+import {
+  PatientListComponent,
+  PatientThumbnailComponent,
+  PatientDetailComponent,
+  CreatePatientComponent,
+  PatientService,
+  PatientListResolver,
+  PatientRouteActivator
+} from './patient/index';
 import { UserModule } from './user/user.module';
 import { ErrorComponent } from './errors/404.component';
 
@@ -55,6 +58,7 @@ function checkDirtyState(component: CreatePatientComponent) {
   providers: [
     PatientService,
     PatientRouteActivator,
+    PatientListResolver,
     {
       provide: 'canDeactivateCreatePatient',
       useValue: checkDirtyState

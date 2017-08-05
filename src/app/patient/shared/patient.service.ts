@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/RX';
 
 const PATIENTS = [
     {
@@ -67,7 +68,12 @@ const PATIENTS = [
   @Injectable()
 export class PatientService {
   getPatients() {
-    return PATIENTS;
+    const subject = new Subject();
+    setTimeout(() => {
+      subject.next(PATIENTS);
+      subject.complete();
+    }, 200);
+    return subject;
   }
 
   getOnePatient(id: number) {
