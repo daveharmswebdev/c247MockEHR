@@ -1,0 +1,10 @@
+<div class="container patient-list-header">
+  <div class="row">
+    <div class="col-md-3">Name</div>
+    <div class="col-md-3">Age/DOB</div>
+    <div class="col-md-3">Gender</div>
+    <div class="col-md-3">Address</div>
+  </div>
+  <hr>
+  <app-patient-thumbnail *ngFor="let patient of patients" [patient]="patient"></app-patient-thumbnail>
+</div>
