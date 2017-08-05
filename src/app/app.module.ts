@@ -14,8 +14,11 @@ import { NavBarComponent } from './nav/navbar.component';
 import { PatientListComponent } from './patient/patient-list.component';
 import { PatientThumbnailComponent } from './patient/patient-thumbnail.component';
 import { PatientDetailComponent } from './patient/patient-detail/patient-detail.component';
+import { CreatePatientComponent } from './patient/create-patient.component';
 import { PatientService } from './patient/shared/patient.service';
+import { PatientRouteActivator } from './patient/patient-detail/patient-route-activator.service';
 import { UserModule } from './user/user.module';
+import { ErrorComponent } from './errors/404.component';
 
 import { rootRoutes } from './routes';
 import { EhrComponent } from './ehr/ehr.component';
@@ -39,10 +42,13 @@ import { firebaseConfig } from '../environments/firebase.config';
     PatientListComponent,
     PatientThumbnailComponent,
     PatientDetailComponent,
-    EhrComponent
+    CreatePatientComponent,
+    EhrComponent,
+    ErrorComponent
   ],
   providers: [
-    PatientService
+    PatientService,
+    PatientRouteActivator
   ],
   bootstrap: [AppComponent]
 })
