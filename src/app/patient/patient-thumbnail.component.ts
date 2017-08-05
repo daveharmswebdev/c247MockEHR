@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IPatient } from './index';
 
 @Component({
   selector: 'app-patient-thumbnail',
@@ -16,5 +17,5 @@ import { Component, Input } from '@angular/core';
   `]
 })
 export class PatientThumbnailComponent {
-  @Input() patient: any;
+  @Input() patient: IPatient;
 }

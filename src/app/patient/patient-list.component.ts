@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PatientService } from './shared/patient.service';
+import { PatientService, IPatient } from './index';
 
 @Component({
   selector: 'app-patient-list',
@@ -8,7 +8,7 @@ import { PatientService } from './shared/patient.service';
   styleUrls: ['./patient-list.component.css']
 })
 export class PatientListComponent implements OnInit {
-  patients: any;
+  patients: IPatient[];
 
   constructor(
     private patientService: PatientService,

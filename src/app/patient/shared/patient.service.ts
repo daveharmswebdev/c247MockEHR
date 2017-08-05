@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/RX';
+import { Subject, Observable } from 'rxjs/RX';
 
-const PATIENTS = [
+import { IPatient } from './patient.model';
+
+const PATIENTS: IPatient[] = [
     {
       id: 1,
       lastName: 'Doe',
       firstName: 'John',
-      age: '55',
-      dob: '07/07/1962',
+      age: 55,
+      dob: new Date('07/07/1962'),
       gender: 'Male',
       address: '123 Any St.',
       city: 'Anywhere',
@@ -18,8 +20,8 @@ const PATIENTS = [
       id: 2,
       lastName: 'Smith',
       firstName: 'Patty',
-      age: '65',
-      dob: '07/07/1952',
+      age: 65,
+      dob: new Date('07/07/1952'),
       gender: 'Female',
       address: '123 Any St.',
       city: 'Anywhere',
@@ -30,8 +32,8 @@ const PATIENTS = [
       id: 3,
       lastName: 'Doe',
       firstName: 'John',
-      age: '55',
-      dob: '07/07/1962',
+      age: 55,
+      dob: new Date('07/07/1962'),
       gender: 'Male',
       address: '123 Any St.',
       city: 'Anywhere',
@@ -42,8 +44,8 @@ const PATIENTS = [
       id: 4,
       lastName: 'Doe',
       firstName: 'John',
-      age: '55',
-      dob: '07/07/1962',
+      age: 55,
+      dob: new Date('07/07/1962'),
       gender: 'Male',
       address: '123 Any St.',
       city: 'Anywhere',
@@ -54,8 +56,8 @@ const PATIENTS = [
       id: 5,
       lastName: 'Doe',
       firstName: 'John',
-      age: '55',
-      dob: '07/07/1962',
+      age: 55,
+      dob: new Date('07/07/1962'),
       gender: 'Male',
       address: '123 Any St.',
       city: 'Anywhere',
@@ -64,11 +66,10 @@ const PATIENTS = [
     }
   ];
 
-
   @Injectable()
 export class PatientService {
-  getPatients() {
-    const subject = new Subject();
+  getPatients():Observable<IPatient[]> {
+    const subject = new Subject<IPatient[]>();
     setTimeout(() => {
       subject.next(PATIENTS);
       subject.complete();
@@ -76,7 +77,7 @@ export class PatientService {
     return subject;
   }
 
-  getOnePatient(id: number) {
+  getOnePatient(id: number):IPatient {
     return PATIENTS.find(patient => patient.id === id);
   }
 }
