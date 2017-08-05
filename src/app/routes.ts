@@ -10,7 +10,7 @@ import { PatientRouteActivator } from './patient/patient-detail/patient-route-ac
 
 export const rootRoutes: Routes = [
   { path: 'ehr', component: EhrComponent },
-  { path: 'patient/new', component: CreatePatientComponent},
+  { path: 'patient/new', component: CreatePatientComponent, canDeactivate: ['canDeactivateCreatePatient']},
   { path: 'patient', component: PatientListComponent },
   { path: 'patient/:id', component: PatientDetailComponent, canActivate: [PatientRouteActivator] },
   { path: '404', component: ErrorComponent},

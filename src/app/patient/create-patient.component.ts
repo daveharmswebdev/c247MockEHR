@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
   templateUrl: './create-patient.component.html'
 })
 export class CreatePatientComponent {
+  isDirty: boolean = true;
 
   constructor(private router: Router) {}
 

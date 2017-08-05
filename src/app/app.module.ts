@@ -24,6 +24,12 @@ import { rootRoutes } from './routes';
 import { EhrComponent } from './ehr/ehr.component';
 import { firebaseConfig } from '../environments/firebase.config';
 
+function checkDirtyState(component: CreatePatientComponent) {
+  if (component.isDirty) {
+    return window.confirm('You have not saved this event, do you really want to cancel?');
+  }
+  return true;
+}
 
 @NgModule({
   imports: [
@@ -48,8 +54,13 @@ import { firebaseConfig } from '../environments/firebase.config';
   ],
   providers: [
     PatientService,
-    PatientRouteActivator
+    PatientRouteActivator,
+    {
+      provide: 'canDeactivateCreatePatient',
+      useValue: checkDirtyState
+    }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
