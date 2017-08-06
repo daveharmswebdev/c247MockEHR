@@ -22,17 +22,12 @@ import {
 } from './patient/index';
 import { UserModule } from './user/user.module';
 import { ErrorComponent } from './errors/404.component';
+import { AuthService } from './user/auth.service';
 
 import { rootRoutes } from './routes';
 import { EhrComponent } from './ehr/ehr.component';
 import { firebaseConfig } from '../environments/firebase.config';
 
-function checkDirtyState(component: CreatePatientComponent) {
-  if (component.isDirty) {
-    return window.confirm('You have not saved this event, do you really want to cancel?');
-  }
-  return true;
-}
 
 @NgModule({
   imports: [
@@ -62,9 +57,16 @@ function checkDirtyState(component: CreatePatientComponent) {
     {
       provide: 'canDeactivateCreatePatient',
       useValue: checkDirtyState
-    }
+    },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
+export function checkDirtyState(component: CreatePatientComponent) {
+  if (component.isDirty) {
+    return window.confirm('You have not saved this event, do you really want to cancel?');
+  }
+  return true;
+}

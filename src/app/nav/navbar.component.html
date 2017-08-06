@@ -1,4 +1,4 @@
-<nav class='navbar navbar-default'>
+<!-- <nav class='navbar navbar-default'>
     <div class='container-fluid'>
         <a class='navbar-brand'>{{pageTitle}}</a>
         <ul class='nav navbar-nav'>
@@ -8,4 +8,36 @@
         </ul>
         <span [routerLink]="['user/profile']" class='navbar-text mock-ehr-user'>Hello, Dave</span>
     </div>
-</nav>
+</nav> -->
+
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" >{{pageTitle}}</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/ehr']" routerLinkActive="active">EHR</a></li>
+        <li><a [routerLink]="['/patient']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Patient</a></li>
+        <li><a [routerLink]="['/patient/new']" routerLinkActive="active">New Patient</a></li>
+      </ul>
+      <div class="navbar-header navbar-right">
+        <ul class="nav navbar-nav">
+          <li>
+            <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+            <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Hello {{auth.currentUser.firstName}}</a>
+          </li>
+        </ul>
+      </div>
+      <form id="searchForm"  class="navbar-form navbar-right"  >
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search Patient" >
+        </div>
+        <button class="btn btn-default" >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
