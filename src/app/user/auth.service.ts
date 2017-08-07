@@ -11,11 +11,21 @@ export class AuthService {
       id: 1,
       userName: userName,
       firstName: 'Dave',
-      lastName: 'Harms'
+      lastName: 'Harms',
+      department: 'CCM',
+      timezone: 'CST'
     };
   }
 
   isAuthenticated() {
     return !!this.currentUser;
+  }
+
+  saveProfile(values) {
+    this.currentUser.firstName = values.firstName;
+    this.currentUser.lastName = values.lastName;
+    this.currentUser.department = values.department;
+    this.currentUser.timezone = values.timezone;
+    console.log(this.currentUser);
   }
 };
