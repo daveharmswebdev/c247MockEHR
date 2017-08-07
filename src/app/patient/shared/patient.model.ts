@@ -5,8 +5,17 @@ export interface IPatient {
   age: number;
   dob: Date;
   gender: string;
-  address: string;
-  city: string;
-  state: string;
-  zip: string;
+  address: {
+    street: string;
+    city: string;
+    state: string;
+    zip: string;
+  };
+  visits?: IVisit[];
+}
+
+export interface IVisit {
+  id: number;
+  date: Date;
+  complaint: string;
 }

@@ -8,7 +8,9 @@ import { IPatient } from './index';
       <div class="col-md-3 patientLink" [routerLink]="['/patient', patient.id]">{{patient?.lastName}}, {{patient?.firstName}}</div>
       <div class="col-md-3">{{patient?.age}}, {{patient?.dob}}</div>
       <div class="col-md-3">{{patient?.gender}}</div>
-      <div class="col-md-3">{{patient?.address}}, {{patient?.city}}, {{patient?.state}} {{patient?.zip}}</div>
+      <div class="col-md-3">
+        {{patient?.address.street}}, {{patient?.address.city}}, {{patient?.address.state}} {{patient?.address.zip}}
+      </div>
     </div>
   `,
   styles: [`

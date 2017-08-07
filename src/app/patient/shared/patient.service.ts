@@ -11,10 +11,19 @@ const PATIENTS: IPatient[] = [
       age: 55,
       dob: new Date('07/07/1962'),
       gender: 'Male',
-      address: '123 Any St.',
-      city: 'Anywhere',
-      state: 'TN',
-      zip: '37215'
+      address: {
+        street: '123 Any St.',
+        city: 'Anywhere',
+        state: 'TN',
+        zip: '37215',
+      },
+      visits: [
+        {
+          id: 1,
+          date: new Date('07/04/2017'),
+          complaint: 'flu like symptoms'
+        }
+      ]
     },
     {
       id: 2,
@@ -23,10 +32,12 @@ const PATIENTS: IPatient[] = [
       age: 65,
       dob: new Date('07/07/1952'),
       gender: 'Female',
-      address: '123 Any St.',
-      city: 'Anywhere',
-      state: 'TN',
-      zip: '37215'
+      address: {
+        street: '123 Any St.',
+        city: 'Anywhere',
+        state: 'TN',
+        zip: '37215'
+      }
     },
     {
       id: 3,
@@ -35,10 +46,12 @@ const PATIENTS: IPatient[] = [
       age: 55,
       dob: new Date('07/07/1962'),
       gender: 'Male',
-      address: '123 Any St.',
-      city: 'Anywhere',
-      state: 'TN',
-      zip: '37215'
+      address: {
+        street: '123 Any St.',
+        city: 'Anywhere',
+        state: 'TN',
+        zip: '37215'
+      }
     },
     {
       id: 4,
@@ -47,10 +60,19 @@ const PATIENTS: IPatient[] = [
       age: 55,
       dob: new Date('07/07/1962'),
       gender: 'Male',
-      address: '123 Any St.',
-      city: 'Anywhere',
-      state: 'TN',
-      zip: '37215'
+      address: {
+        street: '123 Any St.',
+        city: 'Anywhere',
+        state: 'TN',
+        zip: '37215',
+      },
+      visits: [
+        {
+          id: 1,
+          date: new Date('01/02/2017'),
+          complaint: 'headache'
+        }
+      ]
     },
     {
       id: 5,
@@ -59,16 +81,18 @@ const PATIENTS: IPatient[] = [
       age: 55,
       dob: new Date('07/07/1962'),
       gender: 'Male',
-      address: '123 Any St.',
-      city: 'Anywhere',
-      state: 'TN',
-      zip: '37215'
+      address: {
+        street: '123 Any St.',
+        city: 'Anywhere',
+        state: 'TN',
+        zip: '37215'
+      }
     }
   ];
 
   @Injectable()
 export class PatientService {
-  getPatients():Observable<IPatient[]> {
+  getPatients(): Observable<IPatient[]> {
     const subject = new Subject<IPatient[]>();
     setTimeout(() => {
       subject.next(PATIENTS);
@@ -77,7 +101,12 @@ export class PatientService {
     return subject;
   }
 
-  getOnePatient(id: number):IPatient {
+  getOnePatient(id: number): IPatient {
     return PATIENTS.find(patient => patient.id === id);
+  }
+
+  savePatient(patient: IPatient) {
+    const newPatient = Object.assign(patient, {id: 999}, {visits: []});
+    PATIENTS.push(newPatient);
   }
 }

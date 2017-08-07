@@ -1,9 +1,56 @@
 <h1>New Patient</h1>
 <hr>
 <div class="col-md-6">
-  <h3>[Create Patient Form will go here]</h3>
-  <br/>
-  <br/>
-  <button type="Submit" class="btn btn-primary">Save</button>
-  <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+  <form #newPatientForm="ngForm" (ngSubmit)="savePatient(newPatientForm.value)" autocomplete="off" novalidate>
+    <div class="form-group" [ngClass]="{'error': newPatientForm.controls.lastName?.invalid && newPatientForm.controls.lastName?.touched}">
+      <label for="lastName">Last Name:</label>
+      <em *ngIf="newPatientForm.controls.lastName?.invalid && (newPatientForm.controls.lastName?.touched)">Required</em>
+      <input [(ngModel)]="patient.lastName" name="lastName" required id="lastName" type="text" class="form-control" placeholder="Last Name..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': newPatientForm.controls.firstName?.invalid && newPatientForm.controls.firstName?.touched}">
+      <label for="firstName">First Name:</label>
+      <em *ngIf="newPatientForm.controls.firstName?.invalid && (newPatientForm.controls.firstName?.touched)">Required</em>
+      <input [(ngModel)]="patient.firstName" name="firstName" required id="firstName" type="text" class="form-control" placeholder="First Name..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': newPatientForm.controls.age?.invalid && newPatientForm.controls.age?.touched}">
+      <label for="age">Age:</label>
+      <em *ngIf="newPatientForm.controls.age?.invalid && (newPatientForm.controls.age?.touched)">Required</em>
+      <input [(ngModel)]="patient.age" name="age" required id="age" type="text" class="form-control" placeholder="Age..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': newPatientForm.controls.dob?.invalid && newPatientForm.controls.dob?.touched}">
+      <label for="dob">Date of Birth:</label>
+      <em *ngIf="newPatientForm.controls.time?.invalid && (newPatientForm.controls.time?.touched)">Required</em>
+      <input [(ngModel)]="patient.dob" name="dob" required id="dob" type="text" class="form-control" placeholder="DOB..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': newPatientForm.controls.gender?.invalid && newPatientForm.controls.gender?.touched}">
+      <label for="gender">Gender:</label>
+      <em *ngIf="newPatientForm.controls.gender?.invalid && (newPatientForm.controls.gender?.touched)">Required</em>
+      <input [(ngModel)]="patient.gender" name="gender" required id="gender" type="text" class="form-control" placeholder="Gender..." />
+    </div>
+    <div ngModelGroup="address">
+      <div class="form-group" [ngClass]="{'error': newPatientForm.controls.street?.invalid && newPatientForm.controls.street?.touched}">
+        <label for="street">Street:</label>
+        <em *ngIf="newPatientForm.controls.street?.invalid && (newPatientForm.controls.street?.touched)">Required</em>
+        <input [(ngModel)]="patient.address.street" name="street" required id="street" type="text" class="form-control" placeholder="Street..." />
+      </div>
+      <div class="form-group" [ngClass]="{'error': newPatientForm.controls.city?.invalid && newPatientForm.controls.city?.touched}">
+        <label for="city">City:</label>
+        <em *ngIf="newPatientForm.controls.city?.invalid && (newPatientForm.controls.city?.touched)">Required</em>
+        <input [(ngModel)]="patient.address.city" name="city" required id="city" type="text" class="form-control" placeholder="City..." />
+      </div>
+      <div class="form-group" [ngClass]="{'error': newPatientForm.controls.state?.invalid && newPatientForm.controls.state?.touched}">
+        <label for="state">State:</label>
+        <em *ngIf="newPatientForm.controls.state?.invalid && (newPatientForm.controls.state?.touched)">Required</em>
+        <input [(ngModel)]="patient.address.state" name="state" required id="state" type="text" class="form-control" placeholder="State..." />
+      </div>
+      <div class="form-group" [ngClass]="{'error': newPatientForm.controls.zip?.invalid && newPatientForm.controls.zip?.touched}">
+        <label for="zip">Zip:</label>
+        <em *ngIf="newPatientForm.controls.zip?.invalid && (newPatientForm.controls.zip?.touched)">Required</em>
+        <input [(ngModel)]="patient.address.zip" name="zip" required id="zip" type="text" class="form-control" placeholder="Zip..." />
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" [disabled]="newPatientForm.invalid" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
 </div>
